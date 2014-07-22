@@ -52,6 +52,8 @@ def create_building
   puts "What is the building's address?"
   building_address = gets.strip
 
+  # Create and return a new building object, pass these arguments/parameters
+  # Create an initialize method to receive them
   Building.new(building_name, building_address)
 end
 
@@ -59,13 +61,17 @@ end
 
 puts "******************Welcome to Ruby Building Manager****************** \n \n \n"
 
+# Call the create_building method and store it in building
 building = create_building
 
 puts "How many units are there?"
 apt_count = gets.to_i
 
+ # From 0 to as many apartments minus 1, do the following
  0.upto(apt_count - 1) do |unit|
+  # Call the create_apartment method and store it in apartment
   apartment = create_apartment
+  # Store apartments in the apartments array
   building.apartments[unit] = apartment
 
   puts "Apartment added successfully \n #{apartment}"
@@ -74,6 +80,7 @@ apt_count = gets.to_i
   unit_rented = gets.strip
 
   if unit_rented == "y"
+    # Store in the renter variable
     apartment.renter = create_renter
     puts "Renter added successfully"
 

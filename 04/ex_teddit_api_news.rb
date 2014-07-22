@@ -51,7 +51,7 @@ puts flowers[0]
 
 =end
 
-#Reddit
+#Mashable
 #========================================================
 
 # Declare variables

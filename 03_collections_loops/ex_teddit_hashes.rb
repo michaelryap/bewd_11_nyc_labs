@@ -17,8 +17,8 @@
 #
 
 # Used to hold stories captured
-$stories = Array.new
-$story = Hash.new
+@stories = Array.new
+@story = Hash.new
 
 def get_input
   #Get input from the user.
@@ -27,11 +27,11 @@ end
 
 def calculate_upvotes(story)
   upvotes = 1
-  if $story[:category] == "cats"
+  if @story[:category] == "cats"
     return upvotes * 5
-  elsif $story[:category] == "bacon"
+  elsif @story[:category] == "bacon"
     return upvotes * 8
-  elsif $story[:category] == "food"
+  elsif @story[:category] == "food"
     return upvotes * 3
   else
     return upvotes   
@@ -39,12 +39,16 @@ def calculate_upvotes(story)
 end
 
 def add_story
+  @story = Hash.new
 	puts "Please enter a News story:"
-	$story[:title] = get_input
+	@story[:title] = get_input
+  # puts "Story title is #{@story[:title]}"
 	puts "Please give it a category:"
-	$story[:category] = get_input
-	$story[:upvotes] = calculate_upvotes($story)
-	$stories.push($story)
+	@story[:category] = get_input
+	@story[:upvotes] = calculate_upvotes(@story)
+  # puts "I am storing: #{@story}"
+	@stories.push(@story)
+  # puts "Confirm: #{@stories}"
 end
 
 puts "Welcome to Teddit! a text based news aggregator. Get today's news tomorrow!"
@@ -60,6 +64,6 @@ while another_story == "y"
 	another_story = get_input
 end
 
-puts $stories[0]
-puts $stories[1]
-puts $stories.length
+puts @stories[0]
+puts @stories[1]
+puts @stories.length
